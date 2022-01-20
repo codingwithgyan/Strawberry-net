@@ -1,0 +1,49 @@
+*,
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+.container_273 {
+  float: right;
+  display: grid;
+  margin-right: 10vw;
+  grid-template-columns: auto auto auto;
+}
+
+.container_273 > div {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  font-weight: bold;
+  color: rgb(43, 42, 42);
+  cursor: pointer;
+}
+.bx-plus-medical {
+  font-weight: bold;
+  color: green;
+  padding-right: 10px;
+}
+
+.box {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  position: absolute;
+  left: 42vw;
+  top: 10vh;
+}
+#addtype_273 {
+  display: none;
+}
+#addbrand_273 {
+  display: none;
+}
+#addproduct_273 {
+  display: none;
+}
+input,
+select {
+  height: 40px;
+  width: 250px;
+  border-radius: 3px;
+}
