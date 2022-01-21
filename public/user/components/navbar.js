@@ -40,17 +40,16 @@ function navbar()
     </div>
     
     <nav id="navbar">
-        <div class="navMenu"><a href="#">SHOP BY BRAND</a></div>
-        <div class="navMenu"> <a href="#">SKINCARE</a></div>
-        <div class="navMenu"><a href="#">MAKEUP</a></div>
-        <div class="navMenu"><a href="#">HAIRCARE</a></div>
-        <div class="navMenu"><a href="#">PERFUME</a></div>
-        <div class="navMenu"><a href="#">MEN'S SKINCARE</a></div>
-        <div class="navMenu"><a href="#">MEN'S COLOGNE</a></div>
-        <div class="navMenu"><a href="#">HOME SCENTS</a></div>
-        <div class="navMenu"><a href="#">NATURAL BEAUTY</a></div>
-        <div class="navMenu"><a href="#">SPECIALS</a></div>
-        <div class="navMenu"><a href="#">NEW</a></div>
+        <div class="navMenu">SHOP BY BRAND</div>
+        <div class="navMenu">SKINCARE</div>
+        <div class="navMenu">MAKEUP</div>
+        <div class="navMenu">HAIRCARE</div>
+        <div class="navMenu">PERFUME</div>
+        <div class="navMenu">MEN'S SKINCARE</div>
+        <div class="navMenu">MEN'S COLOGNE</div>
+        <div class="navMenu">HOME SCENTS</div>
+        <div class="navMenu">NATURAL BEAUTY</div>
+        <div class="navMenu"></div>
     </nav>`
 }
 

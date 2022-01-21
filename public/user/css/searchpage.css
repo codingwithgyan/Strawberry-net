@@ -43,10 +43,10 @@
 }
 
 #searchResultsBigDiv {
-  border: 1px solid red;
   width: 86.5%;
-  height: 3900px;
+  height: fit-content;
   margin: auto;
+  margin-bottom: 20%;
 }
 
 #refineByBrandsText,
@@ -60,24 +60,17 @@
 
 #refineByBrandsBox,
 #refineBySpecialsBox,
+#showByCategoryBox,
 #showBySpecialsBox {
   width: 251px;
-  height: 44px;
+  height: fit-content;
   border-top: 1px solid black;
   border-left: 1px solid black;
   border-bottom: 5px solid#F1F1F1;
   overflow: scroll;
   overflow-x: hidden;
-}
-
-#showByCategoryBox {
-  width: 251px;
-  height: 94px;
-  border-top: 1px solid black;
-  border-left: 1px solid black;
-  border-bottom: 5px solid#F1F1F1;
-  overflow: scroll;
-  overflow-x: hidden;
+  padding-left: 15px;
+  padding-bottom: 15px;
 }
 
 #refineByBrandsBox > form,
@@ -97,13 +90,13 @@
 .productListRow > span {
   display: inline-flex;
   margin-left: 100px;
-  margin-top: 150px;
 }
 
 .productListRow {
   border-bottom: 1px solid #dfdfdf;
   margin-left: 10px;
   width: 1000px;
+  padding-top: 40px;
 }
 
 .productListRow > span > img {
@@ -114,6 +107,7 @@
 
 .productListRowText {
   font-weight: 700;
+  width: 200px;
 }
 
 .original {
@@ -128,6 +122,8 @@
   background-image: linear-gradient(blue, red);
   color: white;
   font-weight: 700;
+  padding-top: 4px;
+  margin-top: 15px;
 }
 
 .discount > div {
@@ -139,8 +135,26 @@
   width: 160px;
   height: 160px;
   background-color: #c7007d;
-  margin-top: 100px;
-  margin-left: -300px;
+  float: right;
   color: white;
+  text-align: center;
   font-size: 24px;
+  padding-top: 7%;
+}
+
+#main_item_list {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: auto;
+  grid-gap: 30px;
+}
+
+.discountNoriginal {
+  margin-top: -22px;
+}
+
+#searchResultsRightContainer {
+  height: 160px;
+  width: 902px;
+  cursor: pointer;
 }

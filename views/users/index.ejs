@@ -114,7 +114,8 @@
                 </div>
                 <div class="amount">
                   <p class="save"><%=products[i].offer%>%</p>
-                  <p class="amt">	&#8377;<%=products[i].price%></p>
+                  <p class="amt">	&#8377;<%let
+                    price=products[i].price-((products[i].offer/100)*products[i].price)%><%=Math.round(price)%></p>
                 </div>
               </div>
               <div class="addToCart">
@@ -273,7 +274,11 @@
    let txt=document.getElementById("searchBar").value;
    window.location.href="/searchpage?txt="+txt;
  }
-  async function fn() {
+  async function fn(e) {
+    if(e.key=="Enter")
+    {
+      searchfn();
+    }
     let searchBar = document.getElementById("searchBar");
     let search_txt = searchBar.value;
 

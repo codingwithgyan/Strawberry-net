@@ -35,10 +35,11 @@ const addtobag=async(req,res)=>{
 }
 
 const searchpage=async(req,res)=>{
-const str=req.query.txt;
-const products= await Product.find({"product_name": new RegExp('.*' + str + '.*')}).lean().exec();
-console.log(products);
-    res.render("./users/searchpage",{products:products})
+let str=req.query.txt;
+if(str.length>0)
+str=str[0].toUpperCase()+str.slice(1);
+const products= await Product.find({"product_name": new RegExp('.*' + str + '.*')}).populate({path:"brand_id"}).populate({path:"type_id"}).lean().exec();
+    res.render("./users/searchpage",{status:true,search_txt:str,products:products})
 }
 
 

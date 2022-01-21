@@ -100,6 +100,7 @@ body {
   top: 0;
   background-color: rgb(98, 51, 129);
   text-align: center;
+  color: #ffffff;
   padding: 1px;
   margin-top: 107px;
   display: flex;
@@ -108,7 +109,6 @@ body {
 }
 
 a {
-  color: white;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 200;
   font-size: 70%;
@@ -117,24 +117,22 @@ a {
   margin-left: 1px;
 }
 
-a:hover {
-  background-color: white;
-  color: rgb(98, 51, 129);
-}
-
 .navMenu {
   height: 35px;
   width: 135px;
+  color: white;
   margin-left: 5px;
   padding-top: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 200;
+  font-size: 12px;
+  text-decoration: none;
+  cursor: pointer;
 }
-
 .navMenu:hover {
   background-color: white;
   color: rgb(98, 51, 129);
-  text-decoration: underline;
 }
-
 #search_div {
   max-height: 400px;
   width: 412px;

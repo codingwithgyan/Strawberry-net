@@ -13,6 +13,7 @@
     <script src="./user/js/viewproduct.js"></script>
   </head>
   <body>
+    <div id="nav_container"></div>
     <div id="container"></div>
     <div id="main_container">
       <div id="left_box">
@@ -62,7 +63,8 @@
 
         </div>
         <br />
-        <p class="lg_txt" id="price"></p>
+        <p class="lg_txt" id="price">Rs. <%let
+          price=product.price-((product.offer/100)*product.price)%><%=Math.round(price)%></p>
         <div id="bag_div">
           <div>
             <select name="" id="quantity">
@@ -76,11 +78,18 @@
           <div><button id="bag_btn">Add to bag</button></div></div>
           <div>
             <p id="detail_head">PRODUCT DETAILS</p>
-                <p><% let desc=product.description.split(" ").join("\n") %> <%=desc%></p>
+              
+               <% let desc=product.description.split(",") %> 
+               <ul>
+               <%for(let j=0;j<desc.length;j++){%>
+                    <li><%=desc[j]%></li>
+               <%}%>
+              </ul>
           </div>
         </div>
       </div>
     </div>
+    <div id="footer_cont"></div>
   </body>
 </html>
 <script type="module">
@@ -125,7 +134,11 @@
    let txt=document.getElementById("searchBar").value;
    window.location.href="/searchpage?txt="+txt;
  }
-  async function fn() {
+  async function fn(e) {
+    if(e.key=="Enter")
+    {
+      searchfn();
+    }
     let searchBar = document.getElementById("searchBar");
     let search_txt = searchBar.value;
 
