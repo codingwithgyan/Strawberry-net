@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Strawberry</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper@7/swiper-bundle.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/f796e2f633.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- -----------------------footer--------------------------------- -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="./user/css/navbar.css" />
+    <link rel="stylesheet" href="./user/css/index.css" />
+  </head>
+
+  <body>
+    <div id="nav_container"></div>
+    <div id="container">
+      <!-- Swiper -->
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="./user/swiper1img/banner1.jpg" alt="" />
+          </div>
+          <div class="swiper-slide">
+            <img src="./user/swiper1img/banner2.jpg" alt="" />
+          </div>
+          <div class="swiper-slide">
+            <img src="./user/swiper1img/banner3.jpg" alt="" />
+          </div>
+          <div class="swiper-slide">
+            <img src="./user/swiper1img/banner4.jpg" alt="" />
+          </div>
+          <div class="swiper-slide">
+            <img src="./user/swiper1img/banner5.jpg" alt="" />
+          </div>
+          <div class="swiper-slide">
+            <img src="./user/swiper1img/banner6.jpg" alt="" />
+          </div>
+          <div class="swiper-slide">
+            <img src="./user/swiper1img/banner7.jpg" alt="" />
+          </div>
+          <div class="swiper-slide">
+            <img src="./user/swiper1img/banner8.jpg" alt="" />
+          </div>
+          <div class="swiper-slide">
+            <img src="./user/swiper1img/banner9.jpg" alt="" />
+          </div>
+          <div class="swiper-slide">
+            <img src="./user/swiper1img/banner10.jpg" alt="" />
+          </div>
+          <div class="swiper-slide">
+            <img src="./user/swiper1img/banner11.jpg" alt="" />
+          </div>
+          <div class="swiper-slide">
+            <img src="./user/swiper1img/banner12.jpg" alt="" />
+          </div>
+          <div class="swiper-slide">
+            <img src="./user/swiper1img/banner13.jpg" alt="" />
+          </div>
+          <div class="swiper-slide">
+            <img src="./user/swiper1img/banner14.jpg" alt="" />
+          </div>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+
+      <!-- swiper script  -->
+      <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+      <!-- -------------------------------------------------------- -->
+
+      <div class="c1">
+        <div class="h1">
+          <hr class="line" />
+        </div>
+        <div class="h1 t1">
+          <h2>HOLIDAY HOLLY BUYS</h2>
+        </div>
+        <div class="h1">
+          <hr class="line" />
+        </div>
+      </div>
+
+      <!-- ---------------------------- products -------------------------------------------------------- -->
+
+      <div id="products">
+        <% 
+        for(let i=0;i<products.length;i++)
+        { %>
+        
+          <div class="content1">
+            <div class="content1-img">
+              <div class="poster" onclick="redirectToPage('<%=JSON.stringify(products[i])%>')" value="Pour Femme Eau De Parfum Spray">
+                <i class="far fa-heart fav" aria-hidden="true"></i
+                ><img
+                  class="data-image"
+                  src="<%=products[i].image_url_1%>"
+                />
+                <div class="des1"><p>HOLIDAY HOLLY BUYS</p></div><br>
+                <div class="name">
+                  <p class="data-name"><strong><%=products[i].brand_id.brand_name%></strong></p>
+                  <p class="subhead"><%=products[i].product_name%></p>
+                </div>
+                <div class="amount">
+                  <p class="save"><%=products[i].offer%>%</p>
+                  <p class="amt">	&#8377;<%=products[i].price%></p>
+                </div>
+              </div>
+              <div class="addToCart">
+                <button class="bag-btn" onclick="addToBag('<%=products[i]._id%>')">Add to bag</button>
+                <p class="subhead-btn">Extra 6% off Everything</p>
+              </div>
+            </div>
+          </div>
+
+       <%  } %>
+       
+      </div>
+
+      <div class="c1">
+        <div class="h1">
+          <hr class="line" />
+        </div>
+        <div class="h1 t1">
+          <h2>TOP BRANDS</h2>
+        </div>
+        <div class="h1">
+          <hr class="line" />
+        </div>
+      </div>
+
+      <div class="brands">
+        <img
+          src="https://demo2020.strawberrynet.com/images/common/logo_YSL.png"
+          alt=""
+        />
+        <img
+          src="https://demo2020.strawberrynet.com/images/common/logo_ChristianDior.png"
+          alt=""
+        />
+        <img
+          src="https://demo2020.strawberrynet.com/images/common/logo_Lancome.png"
+          alt=""
+        />
+        <img
+          src="https://demo2020.strawberrynet.com/images/common/logo_Clarins.png"
+          alt=""
+        />
+        <img
+          src="https://demo2020.strawberrynet.com/images/common/logo_LaRochePosay.png"
+          alt=""
+        />
+
+        <img
+          src="https://demo2020.strawberrynet.com/images/common/logo_EsteeLauder.png"
+          alt=""
+        />
+        <img
+          src="https://demo2020.strawberrynet.com/images/common/logo_Moroccanoil.png"
+          alt=""
+        />
+        <img
+          src="https://demo2020.strawberrynet.com/images/common/logo_Shiseido.png"
+          alt=""
+        />
+        <img
+          src="https://demo2020.strawberrynet.com/images/common/logo_NARS.png"
+          alt=""
+        />
+        <img
+          src="https://demo2020.strawberrynet.com/images/common/logo_Clinique.png"
+          alt=""
+        />
+
+        <img
+          src="https://demo2020.strawberrynet.com/images/common/logo_bareMinerals.png"
+          alt=""
+        />
+        <img
+          src="https://demo2020.strawberrynet.com/images/common/logo_LauraMercier.png"
+          alt=""
+        />
+        <img
+          src="https://demo2020.strawberrynet.com/images/common/logo_Kerastase.png"
+          alt=""
+        />
+        <img
+          src="https://demo2020.strawberrynet.com/images/common/logo_JMO.png"
+          alt=""
+        />
+        <img
+          src="https://demo2020.strawberrynet.com/images/common/logo_Guerlain.png"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <div id="footer_cont"></div>
+  </body>
+  <script>
+  function redirectToPage(item)
+  {
+     item=JSON.parse(item);
+     window.location.href="/viewproduct?id="+item._id;
+  }
+  async function addToBag(id)
+  {
+    try
+    {
+      let res=await fetch("/addtobag?id="+id);
+      let data=await res.json();
+    } 
+    catch(e)
+    {
+      console.log(e);
+    }
+   
+  }
+ 
+  </script>
+</html>
+
+<script type="module">
+  import { footer } from "./user/script/footer.js";
+  let footer_cont = document.getElementById("footer_cont");
+  footer_cont.innerHTML = footer();
+
+  import navbar from "./user/components/navbar.js";
+  let container = document.getElementById("nav_container");
+  container.innerHTML = navbar;
+
+  let searchButton = document.getElementById("searchButton");
+  searchButton.addEventListener("click", searchfn);
+
+  //Debouncing part
+  let searchBar = document.getElementById("searchBar");
+  searchBar.addEventListener("keydown", fn);
+
+  let cont_1 = document.getElementById("container");
+  cont_1.addEventListener("click", function () {
+    let search_div = document.getElementById("search_div");
+    search_div.innerHTML = "";
+    search_div.style.height = "0px";
+  });
+  let cont_2 = document.getElementById("nav_container");
+  cont_2.addEventListener("click", function () {
+    let search_div = document.getElementById("search_div");
+    search_div.innerHTML = "";
+    search_div.style.height = "0px";
+  });
+  let signin_icon = document.getElementById("signin_icon");
+  signin_icon.addEventListener("click", function () {
+    window.location.href = "Authentication.html";
+  });
+  let bag_icon = document.getElementById("bag_icon");
+  bag_icon.addEventListener("click", function () {
+    window.location.href = "cart.html";
+  });
+
+ function searchfn()
+ {
+   let txt=document.getElementById("searchBar").value;
+   window.location.href="/searchpage?txt="+txt;
+ }
+  async function fn() {
+    let searchBar = document.getElementById("searchBar");
+    let search_txt = searchBar.value;
+
+    let search_div = document.getElementById("search_div");
+    search_div.innerHTML = "";
+    search_div.style.height = "0px";
+    let res= await fetch("/products");
+    let data = await res.json();
+    data=data.data;
+    
+    var arr = [];
+      data.forEach((item) => {
+        let txt = search_txt.toLowerCase();
+        let title = item.product_name.toLowerCase();
+        if (title.indexOf(search_txt) != -1) {
+          arr.push(item);
+        }
+      });
+    if (data != null && arr.length != 0) {
+      if (arr.length != 0) {
+        let search_div = document.getElementById("search_div");
+        search_div.innerHTML = "";
+        arr.forEach((item, ind) => {
+          let div = document.createElement("div");
+          div.innerHTML = item.product_name;
+          div.setAttribute("id", "search_sub_div");
+          div.addEventListener("click", async function () {
+              //console.log(item);
+              window.location.href="/viewproduct?id="+item._id;
+          });
+          search_div.style.height = search_div.offsetHeight + 40 + "px";
+          let size = search_div.offsetHeight;
+          if (size <= 150) {
+            search_div.style.overflowY = "unset";
+          } else {
+            search_div.style.overflowY = "scroll";
+          }
+          search_div.append(div);
+        });
+      }
+    }
+  }
+
+  //  Initialize Swiper
+  var swiper = new Swiper(".mySwiper", {
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+      renderBullet: function (index, className) {
+        return '<span class="' + className + '">' + "</span>";
+      },
+    },
+  });
+</script>
+<!-- --------------COPY THE ENTRIE BELOW CODE FOR NAVBAR------------------------ -->

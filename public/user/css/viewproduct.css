@@ -1,0 +1,95 @@
+*,
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+#main_container {
+  margin-top: 12%;
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  grid-gap: 20px;
+}
+#main_container > div {
+  margin-top: 20px;
+  width: 45vw;
+  height: 92vh;
+}
+#left_box {
+  display: grid;
+  grid-template-rows: 80% 20%;
+  justify-content: center;
+}
+#sub_left_box {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 10px;
+}
+#sub_left_box > div:hover {
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+.sm_img {
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  height: 120px;
+  width: 120px;
+}
+.lg_img {
+  height: 60vh;
+}
+#right_box {
+  padding-top: 20px;
+}
+.size_box {
+  height: 70px;
+  width: fit-content;
+  padding: 8px;
+  border: 2px solid purple;
+  background-color: rgb(228, 227, 227);
+}
+
+.lg_txt {
+  font-size: 45px;
+  font-weight: bold;
+}
+#bag_div {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: left;
+  grid-gap: 10px;
+}
+#quantity,
+#bag_btn {
+  margin-top: 10px;
+  height: 35px;
+  font-size: 16px;
+}
+#quantity {
+  width: 60px;
+}
+#bag_btn {
+  width: 130px;
+  background-color: #00a69c;
+  color: white;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+#detail_head {
+  margin-top: 26px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  width: fit-content;
+  border-bottom: 3px solid purple;
+}
+li {
+  margin-top: 3px;
+  font-size: 17px;
+}
+
+#total_size_box {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}

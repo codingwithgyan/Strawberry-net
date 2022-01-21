@@ -1,0 +1,146 @@
+#searchResultsSmallerText {
+  font-family: lato;
+  font-size: 12px;
+  margin-top: 215px;
+  margin-left: 100px;
+  color: #e82e74;
+}
+
+#forFlexSake {
+  display: flex;
+}
+
+#searchResults > #forFlexSake > i {
+  color: #e82e74;
+  font-size: 36px;
+  margin-top: 15px;
+  margin-left: 100px;
+  font-weight: 700;
+}
+
+#searchResultsBiggerText {
+  font-size: 36px;
+  margin-top: 12px;
+  margin-left: 15px;
+  letter-spacing: 3px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+#searchResultsBox {
+  border: 1px solid #662d91;
+  width: 86.5%;
+  height: 39px;
+  margin: auto;
+  background-color: #662d91;
+}
+
+#searchResultsBox > span > p {
+  color: white;
+  margin-left: 20px;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+#searchResultsBigDiv {
+  border: 1px solid red;
+  width: 86.5%;
+  height: 3900px;
+  margin: auto;
+}
+
+#refineByBrandsText,
+#refineBySpecialsText,
+#showByCategoryText,
+#showBySpecialsText {
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+#refineByBrandsBox,
+#refineBySpecialsBox,
+#showBySpecialsBox {
+  width: 251px;
+  height: 44px;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-bottom: 5px solid#F1F1F1;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+#showByCategoryBox {
+  width: 251px;
+  height: 94px;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-bottom: 5px solid#F1F1F1;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+#refineByBrandsBox > form,
+#refineBySpecialsBox > form,
+#showByCategoryBox > form,
+#showBySpecialsText > form {
+  margin-top: 10px;
+  margin-left: 1px;
+}
+
+#searchResultsLeftContainer {
+  border-right: 1px solid #dfdfdf;
+  width: 265px;
+  height: 500px;
+}
+
+.productListRow > span {
+  display: inline-flex;
+  margin-left: 100px;
+  margin-top: 150px;
+}
+
+.productListRow {
+  border-bottom: 1px solid #dfdfdf;
+  margin-left: 10px;
+  width: 1000px;
+}
+
+.productListRow > span > img {
+  width: 100px;
+  height: 100px;
+  margin-left: 150px;
+}
+
+.productListRowText {
+  font-weight: 700;
+}
+
+.original {
+  margin-left: 10px;
+}
+
+.discount {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  margin-left: 10px;
+  background-image: linear-gradient(blue, red);
+  color: white;
+  font-weight: 700;
+}
+
+.discount > div {
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+#priceSquare {
+  width: 160px;
+  height: 160px;
+  background-color: #c7007d;
+  margin-top: 100px;
+  margin-left: -300px;
+  color: white;
+  font-size: 24px;
+}

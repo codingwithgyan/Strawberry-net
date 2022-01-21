@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./user/css/navbar.css" />
+    <link rel="stylesheet" href="./user/css/viewproduct.css" />
+    <script
+    src="https://kit.fontawesome.com/f796e2f633.js"
+    crossorigin="anonymous"></script>
+    <script src="./user/js/viewproduct.js"></script>
+  </head>
+  <body>
+    <div id="container"></div>
+    <div id="main_container">
+      <div id="left_box">
+        <div>
+          <img
+            class="lg_img" id="pro_img" 
+            src="<%= product.image_url_1%>"
+            alt=""
+          />
+        </div>
+        <div id="sub_left_box">
+          <div>
+            <img
+              class="sm_img" id="pro_img_1"
+              src="<%= product.image_url_1%>"
+              alt=""
+            />
+          </div>
+          <div>
+            <img
+              class="sm_img" id="pro_img_2"
+              src="<%= product.image_url_2%>"
+              alt=""
+            />
+          </div>
+          <div>
+            <img
+              class="sm_img" id="pro_img_3"
+              src="<%= product.image_url_3%>"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+      <div id="right_box">
+        <h1 id="brand"><%= product.brand_id.brand_name %></h1>
+        <br />
+        <h3 id="title"><%= product.product_name %></h3>
+        <br />
+        <p id="size_1"><%= product.size[0] %></p>
+        <br /><br />
+        <div id="total_size_box">
+                <div id="size_2" class="size_box">
+                    <br />
+                    <p><%= product.size[0] %></p>
+                </div>
+
+        </div>
+        <br />
+        <p class="lg_txt" id="price"></p>
+        <div id="bag_div">
+          <div>
+            <select name="" id="quantity">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+          <div><button id="bag_btn">Add to bag</button></div></div>
+          <div>
+            <p id="detail_head">PRODUCT DETAILS</p>
+                <p><% let desc=product.description.split(" ").join("\n") %> <%=desc%></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<script type="module">
+  import { footer } from "./user/script/footer.js";
+  let footer_cont = document.getElementById("footer_cont");
+  footer_cont.innerHTML = footer();
+
+  import navbar from "./user/components/navbar.js";
+  let container = document.getElementById("nav_container");
+  container.innerHTML = navbar;
+
+  let searchButton = document.getElementById("searchButton");
+  searchButton.addEventListener("click", searchfn);
+
+  //Debouncing part
+  let searchBar = document.getElementById("searchBar");
+  searchBar.addEventListener("keydown", fn);
+
+  let cont_1 = document.getElementById("container");
+  cont_1.addEventListener("click", function () {
+    let search_div = document.getElementById("search_div");
+    search_div.innerHTML = "";
+    search_div.style.height = "0px";
+  });
+  let cont_2 = document.getElementById("nav_container");
+  cont_2.addEventListener("click", function () {
+    let search_div = document.getElementById("search_div");
+    search_div.innerHTML = "";
+    search_div.style.height = "0px";
+  });
+  let signin_icon = document.getElementById("signin_icon");
+  signin_icon.addEventListener("click", function () {
+    window.location.href = "Authentication.html";
+  });
+  let bag_icon = document.getElementById("bag_icon");
+  bag_icon.addEventListener("click", function () {
+    window.location.href = "cart.html";
+  });
+
+ function searchfn()
+ {
+   let txt=document.getElementById("searchBar").value;
+   window.location.href="/searchpage?txt="+txt;
+ }
+  async function fn() {
+    let searchBar = document.getElementById("searchBar");
+    let search_txt = searchBar.value;
+
+    let search_div = document.getElementById("search_div");
+    search_div.innerHTML = "";
+    search_div.style.height = "0px";
+    let res= await fetch("/products");
+    let data = await res.json();
+    data=data.data;
+    
+    var arr = [];
+      data.forEach((item) => {
+        let txt = search_txt.toLowerCase();
+        let title = item.product_name.toLowerCase();
+        if (title.indexOf(search_txt) != -1) {
+          arr.push(item);
+        }
+      });
+    if (data != null && arr.length != 0) {
+      if (arr.length != 0) {
+        let search_div = document.getElementById("search_div");
+        search_div.innerHTML = "";
+        arr.forEach((item, ind) => {
+          let div = document.createElement("div");
+          div.innerHTML = item.product_name;
+          div.setAttribute("id", "search_sub_div");
+          div.addEventListener("click", async function () {
+              //console.log(item);
+              window.location.href="/viewproduct?id="+item._id;
+          });
+          search_div.style.height = search_div.offsetHeight + 40 + "px";
+          let size = search_div.offsetHeight;
+          if (size <= 150) {
+            search_div.style.overflowY = "unset";
+          } else {
+            search_div.style.overflowY = "scroll";
+          }
+          search_div.append(div);
+        });
+      }
+    }
+  }
+
+  //  Initialize Swiper
+  var swiper = new Swiper(".mySwiper", {
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+      renderBullet: function (index, className) {
+        return '<span class="' + className + '">' + "</span>";
+      },
+    },
+  });
+</script>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>Products Page</title>
+
+    <link rel="stylesheet" href="./user/css/navbar.css" />
+    <link rel="stylesheet" href="./user/css/searchpage.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&family=Mochiy+Pop+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+
+  <body>
+    <div id="nav_container"></div>
+    <div id="container"></div>
+
+    <div id="searchResults">
+      <div id="searchResultsSmallerText">Search Results</div>
+
+      <div id="forFlexSake">
+        <i class="fa fa-search"></i>
+
+        <div id="searchResultsBiggerText">SEARCH RESULTS</div>
+      </div>
+    </div>
+
+    <div id="searchResultsBox">
+      <span>
+        <p>3 RESULTS FOR: ABBA</p>
+      </span>
+    </div>
+
+    <div id="searchResultsBigDiv">
+      <span style="display: flex">
+        <div id="searchResultsLeftContainer">
+          <div id="refineByBrands">
+            <div id="refineByBrandsText">Refine By Brands</div>
+
+            <div id="refineByBrandsBox">
+              <form><input type="checkbox" /> ABBA</form>
+            </div>
+          </div>
+
+          <div id="refineBySpecials">
+            <div id="refineBySpecialsText">Refine By Specials</div>
+
+            <div id="refineBySpecialsBox">
+              <form><input type="checkbox" /> Special Price</form>
+            </div>
+          </div>
+
+          <div id="showByCategory">
+            <div id="showByCategoryText">Show By Category</div>
+
+            <div id="showByCategoryBox">
+              <form>
+                <input type="checkbox" /> All Hair Types <br />
+                <br />
+                <input type="checkbox" /> Coloured Hair <br />
+                <br />
+                <input type="checkbox" /> Fine Hair
+              </form>
+            </div>
+          </div>
+
+          <div id="showBySpecials">
+            <div id="showBySpecialsText">Show By Specials</div>
+
+            <div id="showBySpecialsBox">
+              <form><input type="checkbox" /> Hair Care</form>
+            </div>
+          </div>
+        </div>
+
+        <div id="searchResultsRightContainer">
+          <span style="display: inline-flex">
+            <div class="productListRow">
+              <span>
+                <div class="productListRowText">
+                  ABBA
+                  <br />
+                  Color Protection Conditioner
+                  <br />
+                  236ml/8oz
+                </div>
+
+                <img
+                  src="https://a.cdnsbn.com/images/products/23208106144.jpg"
+                  alt=""
+                />
+
+                <div class="discountNoriginal">
+                  <div class="original">Rs <span id="num1">1543</span></div>
+
+                  <div class="discount">
+                    <div>SAVE <BR /> <span id="num2">35</span>%</div>
+                  </div>
+                </div>
+              </span>
+            </div>
+
+            <div id="priceSquare">Rs. <span id="num3">1003.00</span></div>
+          </span>
+        </div>
+      </span>
+    </div>
+    <div id="footer_cont"></div>
+  </body>
+</html>
+
+<script type="module">
+  import { footer } from "./user/script/footer.js";
+  let footer_cont = document.getElementById("footer_cont");
+  footer_cont.innerHTML = footer();
+
+  import navbar from "./user/components/navbar.js";
+  let container = document.getElementById("nav_container");
+  container.innerHTML = navbar;
+
+  let searchButton = document.getElementById("searchButton");
+  searchButton.addEventListener("click", searchfn);
+
+  //Debouncing part
+  let searchBar = document.getElementById("searchBar");
+  searchBar.addEventListener("keydown", fn);
+
+  let cont_1 = document.getElementById("container");
+  cont_1.addEventListener("click", function () {
+    let search_div = document.getElementById("search_div");
+    search_div.innerHTML = "";
+    search_div.style.height = "0px";
+  });
+  let cont_2 = document.getElementById("nav_container");
+  cont_2.addEventListener("click", function () {
+    let search_div = document.getElementById("search_div");
+    search_div.innerHTML = "";
+    search_div.style.height = "0px";
+  });
+  let signin_icon = document.getElementById("signin_icon");
+  signin_icon.addEventListener("click", function () {
+    window.location.href = "Authentication.html";
+  });
+  let bag_icon = document.getElementById("bag_icon");
+  bag_icon.addEventListener("click", function () {
+    window.location.href = "cart.html";
+  });
+
+  function searchfn() {
+    let txt = document.getElementById("searchBar").value;
+    window.location.href = "/searchpage?txt=" + txt;
+  }
+  async function fn() {
+    let searchBar = document.getElementById("searchBar");
+    let search_txt = searchBar.value;
+
+    let search_div = document.getElementById("search_div");
+    search_div.innerHTML = "";
+    search_div.style.height = "0px";
+    let res = await fetch("/products");
+    let data = await res.json();
+    data = data.data;
+
+    var arr = [];
+    data.forEach((item) => {
+      let txt = search_txt.toLowerCase();
+      let title = item.product_name.toLowerCase();
+      if (title.indexOf(search_txt) != -1) {
+        arr.push(item);
+      }
+    });
+    if (data != null && arr.length != 0) {
+      if (arr.length != 0) {
+        let search_div = document.getElementById("search_div");
+        search_div.innerHTML = "";
+        arr.forEach((item, ind) => {
+          let div = document.createElement("div");
+          div.innerHTML = item.product_name;
+          div.setAttribute("id", "search_sub_div");
+          div.addEventListener("click", async function () {
+            //console.log(item);
+            window.location.href = "/viewproduct?id=" + item._id;
+          });
+          search_div.style.height = search_div.offsetHeight + 40 + "px";
+          let size = search_div.offsetHeight;
+          if (size <= 150) {
+            search_div.style.overflowY = "unset";
+          } else {
+            search_div.style.overflowY = "scroll";
+          }
+          search_div.append(div);
+        });
+      }
+    }
+  }
+
+  //  Initialize Swiper
+  var swiper = new Swiper(".mySwiper", {
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+      renderBullet: function (index, className) {
+        return '<span class="' + className + '">' + "</span>";
+      },
+    },
+  });
+</script>
