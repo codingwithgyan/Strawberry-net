@@ -50,37 +50,34 @@
             <div id="refineByBrandsText">Refine By Brands</div>
 
             <div id="refineByBrandsBox">
-              <form><input type="checkbox" /> ABBA</form>
+              <form>
+                <% for(let i=0;i<brands.length;i++){ %>
+                  <input type="checkbox" class="brand" onchange="sortByBrand()" value="<%=brands[i].brand_name%>" /> <%=brands[i].brand_name%><br/><br/>
+                <% } %>
+              </form>
             </div>
           </div>
-
-          <div id="refineBySpecials">
-            <div id="refineBySpecialsText">Refine By Specials</div>
-
-            <div id="refineBySpecialsBox">
-              <form><input type="checkbox" /> Special Price</form>
-            </div>
-          </div>
-
           <div id="showByCategory">
             <div id="showByCategoryText">Show By Category</div>
 
             <div id="showByCategoryBox">
               <form>
-                <input type="checkbox" /> All Hair Types <br />
-                <br />
-                <input type="checkbox" /> Coloured Hair <br />
-                <br />
-                <input type="checkbox" /> Fine Hair
+                <% for(let i=0;i<types.length;i++){%>
+                <input type="checkbox" class="type" onchange="sortByType()" value="<%=types[i].type_name%>" /> <%=types[i].type_name%>  <br /> <br />
+                <%}%>
               </form>
             </div>
           </div>
 
           <div id="showBySpecials">
-            <div id="showBySpecialsText">Show By Specials</div>
+            <div id="showBySpecialsText">Show By Price</div>
 
             <div id="showBySpecialsBox">
-              <form><input type="checkbox" /> Hair Care</form>
+              <br/>
+              <form>
+                <input type="radio" onchange="sortByPrice()" value="lth" name="sort_price" id="lth"/> <label for="lth"> Low to High</label><br/><br/>
+                <input type="radio" onchange="sortByPrice()" value="htl" name="sort_price" id="htl"><label for="htl"> High to Low</label><br/>
+              </form>
             </div>
           </div>
         </div>
@@ -133,9 +130,268 @@
   </body>
 </html>
 <script>
+  window.addEventListener("load",()=>{
+          '<% let prod=products; %>'
+    });
   function redirectToPage(item) {
     window.location.href = "/viewproduct?id=" + item;
   }
+  function sortByBrand()
+  {
+      let brand = document.getElementsByClassName("brand");
+      let arr=[];
+      for(let i=0;i<brand.length;i++)
+      {
+            let brand_val=brand[i].value;
+            if(brand[i].checked)
+            {
+                arr.push(brand_val);
+            }
+      }
+      let main_div=document.getElementById("main_item_list");
+      let str="";
+      '<% for(let i=0;i<products.length;i++){%>'
+        
+         for(let j=0;j<arr.length;j++) 
+         {
+              if(arr[j]=='<%= products[i].brand_id.brand_name %>')
+              {
+                '<% let item=products[i] %>'
+                str+=`
+          <div
+            id="searchResultsRightContainer"
+            onclick="redirectToPage('<%=item._id%>')"
+          >
+            <span style="display: flex">
+              <div class="productListRow">
+                <span>
+                  <div class="productListRowText">
+                    <%=item.brand_id.brand_name%>
+                    <br />
+                    <%=item.product_name%>
+                    <br />
+                    <%=item.size[0]%>
+                  </div>
+
+                  <img src="<%=item.image_url_1%>" alt="" />
+
+                  <div class="discountNoriginal">
+                    <div class="original">
+                      Rs <span id="num1"><%=item.price%></span>
+                    </div>
+
+                    <div class="discount">
+                      <div>
+                        SAVE <BR /> <span id="num2"><%=item.offer%></span>%
+                      </div>
+                    </div>
+                  </div>
+                </span>
+              </div>
+              <div id="priceSquare">
+                Rs.
+                <span id="num3"
+                  ><%let
+                  price=item.price-((item.offer/100)*item.price)%><%=Math.round(price)%></span
+                >
+              </div>
+            </span>
+          </div>
+          `;
+                main_div.innerHTML="";
+                main_div.innerHTML=str;
+                break;
+              }
+          }
+         
+        '<%} %>'     
+  }
+
+  function sortByType()
+  {
+    let types= document.getElementsByClassName("type");
+    let arr=[];
+      for(let i=0;i<types.length;i++)
+      {
+            let types_val=types[i].value;
+            if(types[i].checked)
+            {
+                arr.push(types_val);
+            }
+      }
+      let main_div=document.getElementById("main_item_list");
+      let str="";
+      '<% for(let i=0;i<products.length;i++){%>'
+        
+         for(let j=0;j<arr.length;j++) 
+         {
+              if(arr[j]=='<%= products[i].type_id.type_name %>')
+              {
+                '<% let item=products[i] %>'
+                str+=`
+          <div
+            id="searchResultsRightContainer"
+            onclick="redirectToPage('<%=item._id%>')"
+          >
+            <span style="display: flex">
+              <div class="productListRow">
+                <span>
+                  <div class="productListRowText">
+                    <%=item.brand_id.brand_name%>
+                    <br />
+                    <%=item.product_name%>
+                    <br />
+                    <%=item.size[0]%>
+                  </div>
+
+                  <img src="<%=item.image_url_1%>" alt="" />
+
+                  <div class="discountNoriginal">
+                    <div class="original">
+                      Rs <span id="num1"><%=item.price%></span>
+                    </div>
+
+                    <div class="discount">
+                      <div>
+                        SAVE <BR /> <span id="num2"><%=item.offer%></span>%
+                      </div>
+                    </div>
+                  </div>
+                </span>
+              </div>
+              <div id="priceSquare">
+                Rs.
+                <span id="num3"
+                  ><%let
+                  price=item.price-((item.offer/100)*item.price)%><%=Math.round(price)%></span
+                >
+              </div>
+            </span>
+          </div>
+          `;
+                main_div.innerHTML="";
+                main_div.innerHTML=str;
+                break;
+              }
+          }
+         
+        '<%} %>'   
+  }
+
+  function sortByPrice()
+  {
+      let price=document.getElementsByName("sort_price");
+      let main_div=document.getElementById("main_item_list");
+      for(let i=0;i<price.length;i++)
+      {
+        if(price[i].checked)
+        {
+             let res=price[i].value;
+             if(res=="lth")
+             {
+              let str="";
+                  '<% let prod2=products.sort((a,b)=>{  return a.price-b.price  }); %>'
+                  '<% for(let j=0;j<prod2.length;j++){ let item=prod2[j]; %>'
+                  str+=` <div
+            id="searchResultsRightContainer"
+            onclick="redirectToPage('<%=item._id%>')"
+          >
+            <span style="display: flex">
+              <div class="productListRow">
+                <span>
+                  <div class="productListRowText">
+                    <%=item.brand_id.brand_name%>
+                    <br />
+                    <%=item.product_name%>
+                    <br />
+                    <%=item.size[0]%>
+                  </div>
+
+                  <img src="<%=item.image_url_1%>" alt="" />
+
+                  <div class="discountNoriginal">
+                    <div class="original">
+                      Rs <span id="num1"><%=item.price%></span>
+                    </div>
+
+                    <div class="discount">
+                      <div>
+                        SAVE <BR /> <span id="num2"><%=item.offer%></span>%
+                      </div>
+                    </div>
+                  </div>
+                </span>
+              </div>
+              <div id="priceSquare">
+                Rs.
+                <span id="num3"
+                  ><%let
+                  price=item.price-((item.offer/100)*item.price)%><%=Math.round(price)%></span
+                >
+              </div>
+            </span>
+          </div>`;
+          
+          main_div.innerHTML="";
+                main_div.innerHTML=str;
+                '<%}%>' 
+             }
+             else if(res=="htl")
+             {
+                 let str="";
+                 '<% let prod3=products.sort((a,b)=>{  return b.price-a.price  }); %>'
+                 '<% for(let j=0;j<prod2.length;j++){ let item=prod2[j]; %>'
+                  str+=` <div
+            id="searchResultsRightContainer"
+            onclick="redirectToPage('<%=item._id%>')"
+          >
+            <span style="display: flex">
+              <div class="productListRow">
+                <span>
+                  <div class="productListRowText">
+                    <%=item.brand_id.brand_name%>
+                    <br />
+                    <%=item.product_name%>
+                    <br />
+                    <%=item.size[0]%>
+                  </div>
+
+                  <img src="<%=item.image_url_1%>" alt="" />
+
+                  <div class="discountNoriginal">
+                    <div class="original">
+                      Rs <span id="num1"><%=item.price%></span>
+                    </div>
+
+                    <div class="discount">
+                      <div>
+                        SAVE <BR /> <span id="num2"><%=item.offer%></span>%
+                      </div>
+                    </div>
+                  </div>
+                </span>
+              </div>
+              <div id="priceSquare">
+                Rs.
+                <span id="num3"
+                  ><%let
+                  price=item.price-((item.offer/100)*item.price)%><%=Math.round(price)%></span
+                >
+              </div>
+            </span>
+          </div>`;
+          
+          main_div.innerHTML="";
+                main_div.innerHTML=str;
+                '<%}%>' 
+             }
+
+             break;
+        }
+        
+      }
+  }
+  
 </script>
 
 <script type="module">

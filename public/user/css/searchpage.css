@@ -62,13 +62,12 @@
 #refineBySpecialsBox,
 #showByCategoryBox,
 #showBySpecialsBox {
+  height: 150px;
   width: 251px;
-  height: fit-content;
   border-top: 1px solid black;
   border-left: 1px solid black;
   border-bottom: 5px solid#F1F1F1;
-  overflow: scroll;
-  overflow-x: hidden;
+  overflow-y: scroll;
   padding-left: 15px;
   padding-bottom: 15px;
 }
