@@ -258,7 +258,7 @@ body {
   margin-left: 6.4%;
   display: flex;
   flex-direction: column;
-  gap: 110px;
+  gap: 30px;
 }
 .poster {
   display: grid;
@@ -291,7 +291,7 @@ body {
 #deliverToForm {
   position: fixed;
   right: 0px;
-  top: 45%;
+  top: 35%;
   background: white;
   padding-left: 50px;
   padding-right: 50px;

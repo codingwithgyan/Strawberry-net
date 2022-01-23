@@ -4,7 +4,7 @@ const app=express();
 const typeController=require(`./controllers/type.controller`);
 const brandController=require(`./controllers/brand.controller`);
 const productController=require(`./controllers/product.controller`);
-const {home,viewproduct,addtobag,searchpage,cart,payment}=require(`./controllers/view.controller`);
+const {home,viewproduct,addtobag,searchpage,cart,payment,typesearch}=require(`./controllers/view.controller`);
 const authcontroller=require("./controllers/auth.controller")
 const {register,login}=require("./controllers/user.controller")
 app.use(express.json());
@@ -18,6 +18,7 @@ app.use("/viewproduct",viewproduct);
 app.use("/addtobag",addtobag);
 app.use("/searchpage",searchpage);
 app.use("/cart",cart);
+app.use("/typesearch",typesearch);
 app.use("/payment",payment);
 app.use(express.urlencoded({extended:true}))
 app.use("/auth",authcontroller);  //authcontroller

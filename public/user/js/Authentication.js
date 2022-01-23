@@ -84,7 +84,6 @@ let res = await fetch("/login", {
         if(res.status==200)
         {
           let data=await res.json();
-          alert("login successfull");
           localStorage.setItem("token",data.token);
           window.location.href="/home";
           // console.log(data)          
@@ -95,9 +94,10 @@ let res = await fetch("/login", {
         }
         else
         {
-            alert("Invalid user or password");
-          // auth_error.style["display"] = "block";
-          // auth_error.innerHTML=data.message;
+          let data=await res.json();
+          console.log(data.message);
+          auth_error.style["display"] = "block";
+          auth_error.innerHTML=data.message;
         }
 });
 
@@ -130,10 +130,10 @@ async function registerUser()
       }
       else
       {
-        alert("Some error occurred");
-        // var reg_error=document.getElementById("reg_error");
-        // reg_error.innerHTML=data.message;
-        // reg_error.style.display="block"
+        let data = await res.json();
+        var reg_error=document.getElementById("reg_error");
+        reg_error.innerHTML=data.message;
+        reg_error.style.display="block"
       }
 });
 

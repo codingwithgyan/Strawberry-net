@@ -102,6 +102,23 @@ const searchpage=async(req,res)=>{
     }
 }
 
+const typesearch=async(req,res)=>{
+    try
+    {
+        let str=req.query.type;
+        const types = await TypeSchema.findOne({type_name:str}).lean().exec();
+        const products= await Product.find({type_id: types._id}).populate({path:"brand_id"}).populate({path:"type_id"}).lean().exec();
+        const brands  = await Brand.find().lean().exec();
+        
+        res.render("./users/searchpage",{status:true,search_txt:str,products:products,brands:brands,types:types});
+    }
+    catch(e)
+    {
+        res.status(500).send({error:e.message});
+    }
+}
+
+
 const cart=async(req,res)=>{
     if(req.headers?.cookie)
         {
@@ -144,4 +161,4 @@ const payment=async(req,res)=>{
 }
 
 
-module.exports={home,viewproduct,addtobag,searchpage,cart,payment};
+module.exports={home,viewproduct,addtobag,searchpage,cart,payment,typesearch};

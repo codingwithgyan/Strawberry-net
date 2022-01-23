@@ -403,6 +403,17 @@
   let container = document.getElementById("nav_container");
   container.innerHTML = navbar;
 
+  let navMenu=document.getElementsByClassName("navMenu");
+  for(let i=0;i<navMenu.length;i++)
+  {
+        let nav_value = navMenu[i].innerHTML;
+        navMenu[i].addEventListener("click",()=>
+        {
+            window.location.href="/typesearch?type="+nav_value;
+      });
+      
+  }
+
   let searchButton = document.getElementById("searchButton");
   searchButton.addEventListener("click", searchfn);
 
