@@ -221,6 +221,14 @@
     {
       let res=await fetch("/addtobag?id="+id);
       let data=await res.json();
+      if(res.status==200)
+        {
+          alert("Added to cart");
+        }
+        else
+        {
+          alert("Some error occurred");
+        }
     } 
     catch(e)
     {
@@ -233,6 +241,14 @@
 </html>
 
 <script type="module">
+  window.addEventListener("load",()=>{
+    let signin_icon = document.getElementById("signin_icon");
+      '<% if(signin==true){ if(user){%>' 
+      signin_icon.innerHTML="<%=user.first_name%>";
+      signin_icon.style.fontSize="14px";
+      signin_icon.style.lineHeight="3";
+      ' <% }}%>'
+  });
   import { footer } from "./user/script/footer.js";
   let footer_cont = document.getElementById("footer_cont");
   footer_cont.innerHTML = footer();
@@ -260,13 +276,17 @@
     search_div.innerHTML = "";
     search_div.style.height = "0px";
   });
-  let signin_icon = document.getElementById("signin_icon");
-  signin_icon.addEventListener("click", function () {
-    window.location.href = "Authentication.html";
-  });
+ 
+  '<% if(signin===false){%>' 
+         let signin_icon = document.getElementById("signin_icon");
+          signin_icon.addEventListener("click", function () {
+            window.location.href = "/auth";
+          });
+  '<%}%>'
+  
   let bag_icon = document.getElementById("bag_icon");
   bag_icon.addEventListener("click", function () {
-    window.location.href = "cart.html";
+    window.location.href = "/cart";
   });
 
  function searchfn()
@@ -306,7 +326,6 @@
           div.innerHTML = item.product_name;
           div.setAttribute("id", "search_sub_div");
           div.addEventListener("click", async function () {
-              //console.log(item);
               window.location.href="/viewproduct?id="+item._id;
           });
           search_div.style.height = search_div.offsetHeight + 40 + "px";

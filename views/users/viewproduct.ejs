@@ -75,7 +75,7 @@
               <option value="5">5</option>
             </select>
           </div>
-          <div><button id="bag_btn">Add to bag</button></div></div>
+          <div><button id="bag_btn" onclick="addToBag('<%=product._id%>')">Add to bag</button></div></div>
           <div>
             <p id="detail_head">PRODUCT DETAILS</p>
               
@@ -91,6 +91,29 @@
     </div>
     <div id="footer_cont"></div>
   </body>
+  <script>
+    async function addToBag(id)
+    {
+      try
+      {
+        let res=await fetch("/addtobag?id="+id);
+        let data=await res.json();
+        if(res.status==200)
+        {
+          alert("Added to cart");
+        }
+        else
+        {
+          alert("Some error occurred");
+        }
+      } 
+      catch(e)
+      {
+        console.log(e);
+      }
+    
+    }
+  </script>
 </html>
 <script type="module">
   import { footer } from "./user/script/footer.js";
@@ -122,11 +145,11 @@
   });
   let signin_icon = document.getElementById("signin_icon");
   signin_icon.addEventListener("click", function () {
-    window.location.href = "Authentication.html";
+    window.location.href = "/auth";
   });
   let bag_icon = document.getElementById("bag_icon");
   bag_icon.addEventListener("click", function () {
-    window.location.href = "cart.html";
+    window.location.href = "/cart";
   });
 
  function searchfn()

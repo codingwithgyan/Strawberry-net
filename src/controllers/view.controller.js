@@ -1,13 +1,39 @@
-const {Router}=require(`express`);
-const router=Router();
+const express=require(`express`);
+const router=express.Router();
+const app=express();
+const jwt=require(`jsonwebtoken`);
 const Product=require(`../models/product.model`);
 const TypeSchema=require(`../models/type.model`);
 const Brand=require(`../models/brand.model`);
-const home=async(req,res)=>{
-try{
-        const typeData=await TypeSchema.find().lean().exec();
-        const products=await Product.find().populate({path:"brand_id"}).populate({path:"type_id"}).lean().exec();    
-        return res.render("./users/index",{products:products,navbar:typeData});
+const User=require(`../models/user.model`);
+require(`dotenv`).config();
+
+const home=async(req,res,next)=>{
+try
+    {
+        if(req.headers?.cookie)
+        {
+            let token=req.headers?.cookie.split("=")[1];
+            jwt.verify(token, process.env.JWT_SECRET_KEY, async function(err, decoded) {
+                try
+                {
+                    const user=decoded.user;
+                    const typeData=await TypeSchema.find().lean().exec();
+                    const products=await Product.find().populate({path:"brand_id"}).populate({path:"type_id"}).lean().exec();    
+                    return res.render("./users/index",{signin:true,user:user,products:products,navbar:typeData});
+                }
+                catch(e)
+                {
+                    console.log(e.message);
+                }
+            }); 
+        }
+        else
+        {
+            const typeData=await TypeSchema.find().lean().exec();
+            const products=await Product.find().populate({path:"brand_id"}).populate({path:"type_id"}).lean().exec();    
+            return res.render("./users/index",{signin:false,products:products,navbar:typeData});
+        }
         
     }
     catch(e)
@@ -30,9 +56,33 @@ const viewproduct=async(req,res)=>{
 };
 
 const addtobag=async(req,res)=>{
-    const product = await Product.findById(req.query.id).lean().exec();
-    // * Add to user schema here */
-    res.send({status:true,message:"Added to cart"});
+
+    if(req.headers?.cookie)
+    {
+        try
+        {
+            let token=req.headers?.cookie.split("=")[1];
+            jwt.verify(token, process.env.JWT_SECRET_KEY, async function(err, decoded) {
+                let user=decoded.user;
+                user= await User.findById({_id:user._id});
+                let arr=user.cart;
+                arr.push(req.query.id);
+                const userData = await User.findByIdAndUpdate({_id:user._id},{cart:arr});
+                res.status(200).send({status:true,user:user});
+            });
+        }
+        catch(e)
+        {
+            res.status(403).send({status:false});
+        }
+    } 
+    else
+    {
+        res.status(403).send({status:false});
+    }      
+   
+   
+   
 }
 
 const searchpage=async(req,res)=>{
@@ -52,5 +102,46 @@ const searchpage=async(req,res)=>{
     }
 }
 
+const cart=async(req,res)=>{
+    if(req.headers?.cookie)
+        {
+            let token=req.headers?.cookie.split("=")[1];
+            jwt.verify(token, process.env.JWT_SECRET_KEY, async function(err, decoded) {
+                try
+                {
+                    let user=decoded.user;
+                    user = await User.findById(user._id);
+                    const typeData=await TypeSchema.find().lean().exec();
 
-module.exports={home,viewproduct,addtobag,searchpage};
+                    let product_list=[];
+                    for(let i=0;i<user.cart.length;i++)
+                    {
+                       let products=await Product.find({_id:user.cart[i]}).populate({path:"brand_id"}).populate({path:"type_id"}).lean().exec();    
+                       product_list.push(JSON.stringify(products));
+                       
+
+                    }
+                 //   console.log(product_list);
+                    
+                    return  res.render("./users/cart",{signin:false,product:product_list});
+
+                    //return res.render("./users/index",{signin:true,user:user,products:products,navbar:typeData});
+                }
+                catch(e)
+                {
+                    console.log({signin:false});
+                }
+            }); 
+        }
+        else
+        {
+            return res.redirect("/auth",{signin:false});
+        }
+}
+
+const payment=async(req,res)=>{
+      res.status(200).render("./users/payment");          
+}
+
+
+module.exports={home,viewproduct,addtobag,searchpage,cart,payment};

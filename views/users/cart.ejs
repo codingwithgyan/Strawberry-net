@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./user/css/cart.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&family=Mochiy+Pop+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/f796e2f633.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <!--NavBar-->
+    <div id="nav_container"></div>
+    <div id="container"></div>
+
+    <!--FlagModal Plus Form Start -->
+
+    <div id="megaContainer">
+      <div id="shopping_bag_title">SHOPPING BAG</div>
+
+      <div id="deliverToAndForm">
+        <div id="deliverTo">
+          <div id="deliverToText">
+            <span id="flagModalTrigger">
+              DELIVER TO:
+
+              <img
+                src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg"
+              />
+              India
+
+              <i class="fa fa-arrow-right"></i>
+            </span>
+          </div>
+        </div>
+
+       
+        <!-- <div id="deliverToForm">
+                <div id="deliverToForm_topBox">
+                    <span id="deliverToForm_signIn">
+                      Sign In
+                    </span>
+                    <span id="deliverToForm_newHere">
+                        New Here?
+                    </span>
+                </div>
+
+                <div id="deliverToForm_Actual">
+                    <div id="deliverToForm_SignUp">
+                        <form action="" id="deliverToForm_SignUpForm">
+                            <div id="deliverToForm_SignUpForm_Email">
+                            <input type="text" placeholder="Email Address">
+                            </div>
+                            <div id="deliverToForm_SignUpForm_Password">
+                            <input type="text" placeholder="password">
+                            </div>
+
+                        <div id="forgotPassword">
+                            Forgot Password
+                        </div>
+
+                        <button id="deliverToFormSubmit">SIGN IN</button>
+
+                        <hr id="deliverToFormHR">
+
+                        <div id="deliverToForm_OR">
+                            OR
+                        </div>
+
+                        <div id="deliverToFormGuestCheckOut">
+                            Guest Checkout
+                        </div>
+
+                        <div id="deliverToFormGuestCheckOutInput">
+                            <form action="" id="deliverToForm_GuestCheckoutForm">
+                            <input type="text" placeholder="Email Address">
+                            <button id="deliverToForm_guestCheckOutSubmit">CONTINUE AS GUEST</button>
+
+                        </div>
+
+                        </form>
+                    </div>
+                </div>  
+
+            </div> -->
+      </div>
+
+      <div id="flagModal">
+        <div id="flagModalContent">
+          <div id="flagModalTopBox">
+            <input
+              type="text"
+              name=""
+              id="flagModalSearch"
+              placeholder="Search Region"
+            />
+            <div id="flagModalCross">
+              <i class="fa fa-close"></i>
+            </div>
+          </div>
+          <div id="flagModalCountryBoxes">
+            <div id="flagModalCountryBox"></div>
+          </div>
+        </div>
+      </div>
+      <div id="cart_content">
+          <% let total=0; for(let i=0;i<product.length;i++){  let product2=JSON.parse(product[i])[0];  %>
+                <div class="poster">
+                    <div><img class="sm_img" src="<%=product2.image_url_1%>" alt=""></div>
+                    <div><%=product2.product_name%></div>
+                    <div><%=product2.price%></div>
+                    <%total+=product2.price%>
+                </div>
+        <%}%>
+      </div>
+    </div>
+    <div id="deliverToForm">
+        <h1 id="total">Total Rs <%= total %></h1><br/>
+        <button id="proceed" onclick="redirectToPage()">Proceed &rightarrow;</button>
+      </div>
+    <!--FlagModal Plus Form End -->
+    <div id="footer_cont"></div>
+    
+  </body>
+  <script>
+    function redirectToPage()
+    {
+        window.location.href="/payment";
+    }
+  </script>
+</html>
+
+
+<script src="./user/scripts/flagModal.js"></script>
+
+
+<!-- --------------COPY THE ENTRIE BELOW CODE FOR NAVBAR------------------------ -->
+
+<script type="module">
+  window.addEventListener("load", () => {
+    let signin_icon = document.getElementById("signin_icon");
+    ("<% if(signin==true){ if(user){%>");
+    signin_icon.innerHTML = "<%=user.first_name%>";
+    signin_icon.style.fontSize = "14px";
+    signin_icon.style.lineHeight = "3";
+    (" <% }}%>");
+  });
+  import { footer } from "./user/script/footer.js";
+  let footer_cont = document.getElementById("footer_cont");
+  footer_cont.innerHTML = footer();
+
+  import navbar from "./user/components/navbar.js";
+  let container = document.getElementById("nav_container");
+  container.innerHTML = navbar;
+
+  let searchButton = document.getElementById("searchButton");
+  searchButton.addEventListener("click", searchfn);
+
+  //Debouncing part
+  let searchBar = document.getElementById("searchBar");
+  searchBar.addEventListener("keydown", fn);
+
+  let cont_1 = document.getElementById("container");
+  cont_1.addEventListener("click", function () {
+    let search_div = document.getElementById("search_div");
+    search_div.innerHTML = "";
+    search_div.style.height = "0px";
+  });
+  let cont_2 = document.getElementById("nav_container");
+  cont_2.addEventListener("click", function () {
+    let search_div = document.getElementById("search_div");
+    search_div.innerHTML = "";
+    search_div.style.height = "0px";
+  });
+
+  ("<% if(signin===false){%>");
+  let signin_icon = document.getElementById("signin_icon");
+  signin_icon.addEventListener("click", function () {
+    window.location.href = "/auth";
+  });
+  ("<%}%>");
+
+  let bag_icon = document.getElementById("bag_icon");
+  bag_icon.addEventListener("click", function () {
+    window.location.href = "/cart";
+  });
+
+  function searchfn() {
+    let txt = document.getElementById("searchBar").value;
+    window.location.href = "/searchpage?txt=" + txt;
+  }
+  async function fn(e) {
+    if (e.key == "Enter") {
+      searchfn();
+    }
+    let searchBar = document.getElementById("searchBar");
+    let search_txt = searchBar.value;
+
+    let search_div = document.getElementById("search_div");
+    search_div.innerHTML = "";
+    search_div.style.height = "0px";
+    let res = await fetch("/products");
+    let data = await res.json();
+    data = data.data;
+
+    var arr = [];
+    data.forEach((item) => {
+      let txt = search_txt.toLowerCase();
+      let title = item.product_name.toLowerCase();
+      if (title.indexOf(search_txt) != -1) {
+        arr.push(item);
+      }
+    });
+    if (data != null && arr.length != 0) {
+      if (arr.length != 0) {
+        let search_div = document.getElementById("search_div");
+        search_div.innerHTML = "";
+        arr.forEach((item, ind) => {
+          let div = document.createElement("div");
+          div.innerHTML = item.product_name;
+          div.setAttribute("id", "search_sub_div");
+          div.addEventListener("click", async function () {
+            window.location.href = "/viewproduct?id=" + item._id;
+          });
+          search_div.style.height = search_div.offsetHeight + 40 + "px";
+          let size = search_div.offsetHeight;
+          if (size <= 150) {
+            search_div.style.overflowY = "unset";
+          } else {
+            search_div.style.overflowY = "scroll";
+          }
+          search_div.append(div);
+        });
+      }
+    }
+  }
+
+  //  Initialize Swiper
+  var swiper = new Swiper(".mySwiper", {
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+      renderBullet: function (index, className) {
+        return '<span class="' + className + '">' + "</span>";
+      },
+    },
+  });
+</script>

@@ -1,0 +1,248 @@
+body {
+  background-color: #f0f0f0;
+  margin: 0;
+  font-family: "Lato", sans-serif;
+  letter-spacing: 0.04em;
+  color: #2c2c2c;
+}
+
+#container {
+  width: 25%;
+  height: 480px;
+  margin: auto;
+  margin-top: 30px;
+  background-color: #fff;
+  padding: 35px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+#signin_cont_auth_head,
+#newhere_auth_head {
+  height: 53px;
+  margin-top: 10px;
+  border-bottom: 1px solid #623380;
+  display: flex;
+  justify-content: space-evenly;
+  color: black;
+}
+
+#signin_cont_auth_signin,
+#signin_cont_auth_newhere,
+#newhere_auth_signin,
+#newhere_auth_newhere {
+  height: 39px;
+  width: 50%;
+  text-align: center;
+  padding-top: 10px;
+  font-size: 22px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#auth_input_contain {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+#auth_email,
+#auth_pass {
+  padding: 10px;
+  border: 1px solid #623380;
+  outline: none;
+}
+
+#auth_pass {
+  margin-top: 15px;
+}
+
+#auth_error,
+#repass_error,
+#reg_error {
+  display: none;
+  color: red;
+  font-size: 14px;
+  margin-top: 3px;
+}
+
+#auth_Forgot_pass {
+  margin-top: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  color: #623380;
+  text-decoration: underline;
+  width: 110px;
+}
+
+#auth_signin_btn {
+  padding: 9px;
+  border-radius: 0;
+  width: 58%;
+  margin-left: 23%;
+  font-size: 19px;
+  font-weight: 500;
+  color: #fff;
+  background-color: #623380;
+  border: none;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+#auth_signin_btn:hover {
+  background-color: #f5f5f5;
+  color: #000;
+  border: 1px solid silver;
+}
+
+#newhere_cont {
+  display: none;
+  height: inherit;
+}
+
+#newhere_input_contain {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+}
+
+#newhere_input_contain > input {
+  padding: 10px;
+  border: 1px solid #623380;
+  margin-top: 15px;
+  outline: none;
+}
+
+#pass_disclaim {
+  font-size: 14px;
+  line-height: 24px;
+  width: 83%;
+  color: black;
+}
+
+#reenter_pass {
+  display: flex;
+  flex-direction: column;
+}
+
+#reenter_pass > input {
+  padding: 10px;
+  border: 1px solid #623380;
+  margin-top: 15px;
+  outline: none;
+}
+
+.g-recaptcha {
+  margin-top: 15px;
+  transform: scale(1.04);
+  transform-origin: 0 0;
+}
+
+#privacy_terms {
+  font-size: 14px;
+  line-height: 22px;
+  margin-top: 20px;
+}
+
+#privacy_terms > a {
+  text-decoration: none;
+}
+
+#email_subscribe {
+  margin-top: 10px;
+  height: 40px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  display: flex;
+}
+
+#email_subscribe_checkbox {
+  margin-top: 20px;
+  width: 1.5em;
+  height: 1.5em;
+  border: 0.15em solid currentColor;
+}
+
+#email_subscribe > div {
+  color: #000;
+  font-size: 15px;
+  width: 190px;
+  height: 40px;
+  margin-left: 12px;
+  line-height: 23px;
+}
+
+#auth_register_btn {
+  padding: 9px;
+  border-radius: 0;
+  width: 58%;
+  margin-left: 21%;
+  font-size: 19px;
+  font-weight: 500;
+  color: #fff;
+  background-color: #623380;
+  border: none;
+  margin-top: 15px;
+  cursor: pointer;
+  margin-bottom: 100px;
+}
+
+#auth_register_btn:hover {
+  background-color: #f5f5f5;
+  color: #000;
+  border: 1px solid silver;
+}
+
+#signin_cont_auth_signin {
+  border-bottom: 0.181em solid #623380;
+}
+
+#newhere_auth_newhere {
+  border-bottom: 0.181em solid #623380;
+}
+
+#forgot_pass_wrap {
+  display: none;
+}
+
+#forgot_pass_text {
+  font-weight: bold;
+  text-align: center;
+  color: rgb(128, 66, 155);
+}
+
+#forgot_pass_email {
+  padding: 10px;
+  border: 1px solid #623380;
+  width: 93%;
+  outline: none;
+}
+
+#forgot_email_verify_btn {
+  padding: 2px;
+  height: 40px;
+  border-radius: 0;
+  width: 80%;
+  margin-left: 10%;
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+  background-color: #623380;
+  border: none;
+  margin-top: 15px;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+}
+
+#forgot_email_verify_btn:hover {
+  background-color: #f5f5f5;
+  color: #000;
+  border: 1px solid silver;
+}
+
+#forgot_email_link {
+  display: none;
+  font-size: 14px;
+  line-height: 24px;
+  color: #000;
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment</title>
+    <link rel="stylesheet" href="./user/css/payment.css" />
+    <script src="./user/js/payment.js"></script>
+  </head>
+  <body>
+    <div id="main_container">
+      <div id="left_box">
+        <div id="form">
+          <p id="error"></p>
+          <div>
+            <label>Enter card number</label>
+            <input
+              type="text"
+              id="card_no"
+              placeholder="XXXX XXXX XXXX (12 digits)"
+            />
+          </div>
+          <div>
+            <label>Expiry date</label>
+            <input type="text" id="card_expiry" placeholder="MM/YY" />
+          </div>
+          <div>
+            <label>Enter CVV</label>
+            <input type="text" id="card_cvv" placeholder="XXX (3 digits)" />
+          </div>
+          <div>
+            <label>Name on the card</label>
+            <input type="text" id="card_name" placeholder="Name" />
+          </div>
+          <div><button id="pay_btn">Pay now</button></div>
+        </div>
+      </div>
+      <div id="right_box">
+        <div>
+          <img
+            src="data:image/png;base64,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"
+            alt=""
+          />
+        </div>
+        <div>
+          <img
+            src="https://www.seekpng.com/png/detail/336-3364024_visa-logo-png-visa-money-bags-tanktop.png"
+            alt=""
+          />
+        </div>
+        <div>
+          <img
+            src="data:image/png;base64,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"
+            alt=""
+          />
+        </div>
+        <div>
+          <img
+            src="https://seeklogo.com/images/P/paypal-logo-C83095A82C-seeklogo.com.png"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
