@@ -87,15 +87,15 @@ let data=await res.json();
 
 console.log(data)
 
-
   auth_error.style["display"] = "block";
   auth_error.innerHTML=data.message;
-
+  
+if (data.message == undefined) {
+  auth_error.style.display = "none";
+}
 }
 
 async function registerUser(){
-  
-
 let res = await fetch("/register", {
   method: "POST",
   body: JSON.stringify({
@@ -116,8 +116,13 @@ console.log(data);
 
 var reg_error=document.getElementById("reg_error");
 
+
   reg_error.innerHTML=data.message;
   reg_error.style.display="block"
+  
+  if (data.message == undefined) {
+    reg_error.style.display = "none";
+  }
 
 }
 

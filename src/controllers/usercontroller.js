@@ -39,7 +39,7 @@ const login=async(req,res)=>{
        const match=user.checkPassword(req.body.password)
 
        if(!match)
-          return res.send({ message: "Username and Passwword does not match" });
+          return res.send({ message:"Username and Password does not match"});
      
        const token=newToken(user)
        return res.status(201).send({user,token});
