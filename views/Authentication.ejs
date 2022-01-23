@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,300,700,900" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="Authentication.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <title>Authentication</title>
+</head>
+
+<body>
+        
+
+    <!-- Authentication Container -->
+    <div id="container">
+
+        <!-- SIGN IN section -->
+
+        <div id="signin_cont">
+            <div id="signin_cont_auth_head">
+                <div id="signin_cont_auth_signin" onclick="signinDisplay()">Sign In</div>
+                <div id="signin_cont_auth_newhere" onclick="newhereDisplay()">New Here?</div>
+            </div>
+           
+            <div id="auth_input_contain">
+                <input id="auth_email" type="email" name="email" placeholder="Email address" onfocus="inputClick(event)" autocomplete="off"></input>
+                <input id="auth_pass" type="password" name="password" placeholder="Password" onfocus="inputClick(event)" autocomplete="off"></input>
+                <div id="auth_error"></div>
+            </div>
+
+            <div id="auth_Forgot_pass" onclick="forgotPass()">
+                Forgot Password ?
+            </div>
+
+            <input type="submit" name="submit" value="SIGN IN" id="auth_signin_btn" onclick="signinUser()"></input>
+            
+        </div>
+
+        <!-- NEW HERE section -->
+
+        <div id="newhere_cont">
+            <div id="newhere_auth_head">
+                <div id="newhere_auth_signin" onclick="signinDisplay()">Sign In</div>
+                <div id="newhere_auth_newhere" onclick="newhereDisplay()">New Here?</div>
+            </div>
+
+            <div id="newhere_input_contain">
+                <input type="text" placeholder="Enter Name" onfocus="inputClick(event)" id="name" name="first_name" autocomplete="off">
+                <input type="text" placeholder="Last Name" onfocus="inputClick(event)" id="lastname" name="last_name" autocomplete="off">
+                <input type="email" placeholder="Email address" onfocus="inputClick(event)" id="email" name="email" autocomplete="off">
+                <div id="reg_error"></div>
+                <input type="password" placeholder="Password" onfocus="inputClick(event)" id="password" name="password">
+
+                <div id="pass_disclaim">Please enter a minimum of 8 characters, including at least 1 letter and 1 number.</div>
+                
+                <div id="reenter_pass">
+                    <input type="text" placeholder="Re-enter your Password" onfocus="inputClick(event)" id="repassword" autocomplete="off">
+                    <div id="repass_error">The passwords do not match.</div>
+                </div>
+                
+                <div class="g-recaptcha" data-sitekey="6LciFK0dAAAAAEUJFH7chUyNh3IBwfL1edKqPMIz"></div>
+                
+                <div id="privacy_terms">By creating your account, you agree to our <br>
+                    <a href="#">Privacy Policy</a> & <a href="#">Terms & Conditions</a>
+                </div>
+                
+                <div id="email_subscribe">
+                    <input type="checkbox" id="email_subscribe_checkbox">
+                    <div>Subscribe to our exclusive email offers</div>
+                </div>
+                <button  id="auth_register_btn"   onclick="registerUser()">REGISTER</button>
+
+         
+        </div>
+
+        <!-- Forgot Password Section -->
+
+        <div id="forgot_pass_wrap">
+
+            <div id="forgot_pass_text">
+                <h3>Please enter your email to reset password</h3>
+            </div>
+            <input id="forgot_pass_email" type="email" placeholder="Email address" onfocus="inputClick(event)">
+            <div id="forgot_email_link"></div>
+            <button id="forgot_email_verify_btn" onclick="forgotEmailsend()">SEND VERIFY EMAIL TO ME</button>
+        </div>
+
+
+    </div>
+    
+
+</body>
+
+</html>
+
+<script src="Authentication.js"></script>
