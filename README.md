@@ -3,7 +3,7 @@
 Ecommerce website to buy beauty products both for men and women.
 <br/>
 <br/>
-<img width="500px" src="./public/web.png"/>
+<img width="500px" src="public/web.PNG"/>
 <br/>
 
 # Teach stack
