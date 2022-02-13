@@ -1,7 +1,7 @@
 {
-  "name": "Strawberry-net",
+  "name": "strawberry-net",
   "version": "1.0.0",
-  "description": "",
+  "description": "<br/>\r Ecommerce website to buy beauty products both for men and women.\r <br/>\r <br/>\r <img width=\"500px\" src=\"public/web.PNG\"/>\r <br/>",
   "main": "index.js",
   "dependencies": {
     "bcryptjs": "^2.4.3",
