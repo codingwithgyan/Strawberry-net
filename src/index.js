@@ -10,10 +10,12 @@ const {register,login}=require("./controllers/user.controller")
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(express.static("public"));
+app.get("/",(req,res)=>{
+    res.redirect("/home");
+})
 app.use("/types",typeController);
 app.use("/brands",brandController);
 app.use("/products",productController);
-app.use("/",home);
 app.use("/home",home);
 app.use("/viewproduct",viewproduct);
 app.use("/addtobag",addtobag);
