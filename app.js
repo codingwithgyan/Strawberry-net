@@ -1,5 +1,5 @@
-const app=require(`./index`);
-const connect = require(`./config/db`)
+const app=require(`./src/index`);
+const connect = require(`./src/config/db`)
 
 app.listen(2345,async(req,res)=>{
     try
