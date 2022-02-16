@@ -14,7 +14,7 @@ try
         if(req.headers?.cookie)
         {
             let token=req.headers?.cookie.split("=")[1];
-            jwt.verify(token, process.env.JWT_SECRET_KEY, async function(err, decoded) {
+            jwt.verify(token, 'smuhdjdcbxzjhcdscdskjh', async function(err, decoded) {
                 try
                 {
                     const user=decoded.user;
@@ -62,7 +62,7 @@ const addtobag=async(req,res)=>{
         try
         {
             let token=req.headers?.cookie.split("=")[1];
-            jwt.verify(token, process.env.JWT_SECRET_KEY, async function(err, decoded) {
+            jwt.verify(token, 'smuhdjdcbxzjhcdscdskjh', async function(err, decoded) {
                 let user=decoded.user;
                 user= await User.findById({_id:user._id});
                 let arr=user.cart;
@@ -123,7 +123,7 @@ const cart=async(req,res)=>{
     if(req.headers?.cookie)
         {
             let token=req.headers?.cookie.split("=")[1];
-            jwt.verify(token, process.env.JWT_SECRET_KEY, async function(err, decoded) {
+            jwt.verify(token, 'smuhdjdcbxzjhcdscdskjh', async function(err, decoded) {
                 try
                 {
                     let user=decoded.user;
