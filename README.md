@@ -1,10 +1,9 @@
 # Strawberry-net
-
 <br/>
 Ecommerce website to buy beauty products both for men and women.
 <br/>
 <br/>
-<img width="500px" src="public/web.png"/>
+<img width="500px" src="public/web.PNG"/>
 <br/>
 
 # Teach stack
@@ -12,7 +11,6 @@ Ecommerce website to buy beauty products both for men and women.
 HTML | CSS | JAVASCRIPT | NODEJS | MONGODB | EJS | POSTMAN
 
 # Features
-
 <ul>
     <li>Built Api to fetch data from the backend</li>
     <li>Sort products based on their price or brand</li>
