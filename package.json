@@ -1,8 +1,8 @@
 {
-  "name": "strawberry-net",
+  "name": "Strawberry-net",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "dotenv": "^14.2.0",
@@ -14,7 +14,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node app"
+    "server": "nodemon src/server"
   },
   "repository": {
     "type": "git",

@@ -13,7 +13,6 @@ app.use(express.static("public"));
 app.use("/types",typeController);
 app.use("/brands",brandController);
 app.use("/products",productController);
-app.use("/",home);
 app.use("/home",home);
 app.use("/viewproduct",viewproduct);
 app.use("/addtobag",addtobag);

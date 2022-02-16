@@ -1,4 +1,5 @@
 # Strawberry-net
+
 <br/>
 Ecommerce website to buy beauty products both for men and women.
 <br/>
@@ -11,6 +12,7 @@ Ecommerce website to buy beauty products both for men and women.
 HTML | CSS | JAVASCRIPT | NODEJS | MONGODB | EJS | POSTMAN
 
 # Features
+
 <ul>
     <li>Built Api to fetch data from the backend</li>
     <li>Sort products based on their price or brand</li>
